@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CategoryActivity"
+    >
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:lottie_rawRes="@raw/background"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_speed="0.5"
+        android:scaleType="centerCrop">
+
+    </com.airbnb.lottie.LottieAnimationView>
+    <RelativeLayout
+        android:id="@+id/layMain"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        tools:ignore="MissingConstraints">
+
+<!--        <ImageView-->
+<!--            android:layout_width="60dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:padding="15dp"-->
+<!--            android:src="@drawable/setting_outline" />-->
+
+        <ImageView
+            android:id="@+id/btnRules"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:src="@drawable/question_outline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="Наборы"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+    <RelativeLayout
+
+        android:id="@+id/laySets"
+        app:layout_constraintTop_toBottomOf="@+id/layMain"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        tools:ignore="MissingConstraints">
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="12dp"
+            android:layout_marginLeft="20dp"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize">
+            <RelativeLayout
+                android:id="@+id/viewCards"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:background="@color/christmas_end">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Карточки"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="10dp"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="5dp"
+
+                    android:layout_alignParentTop="true"
+                    android:textAllCaps="false"/>
+                <TextView
+                    android:id="@+id/txtCards"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_centerHorizontal="true"
+                    android:padding="12dp"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/white"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="12dp"
+            android:layout_marginLeft="80dp"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize">
+            <RelativeLayout
+                android:id="@+id/viewSet"
+                android:layout_width="?actionBarSize"
+                android:layout_height="?actionBarSize"
+                android:background="@color/christmas_end">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Наборы"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="10dp"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:paddingTop="5dp"
+
+                    android:layout_alignParentTop="true"
+                    android:textAllCaps="false"/>
+                <TextView
+                    android:id="@+id/txtSets"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_centerHorizontal="true"
+                    android:padding="12dp"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@color/white"
+                    />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:enabled="false"
+            android:id="@+id/btnStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="20dp"
+            android:text=" Начать "
+            style="@style/btn_Next"
+            android:padding="14dp"
+            android:textAllCaps="false"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="112dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+
+                <RelativeLayout
+                    android:id="@+id/firstLayout"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/gradient_dark_skies">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="25dp"
+                        android:text="Начальный"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="200dp"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="60dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txtCountStarting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:padding="20dp"
+                        android:text="125 карт"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/rbStarting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:clickable="false"
+                        android:theme="@style/RBStarting" />
+                    <!--                    <com.airbnb.lottie.LottieAnimationView-->
+                    <!--                        android:id="@+id/btnChecked"-->
+                    <!--                        android:layout_width="60dp"-->
+                    <!--                        android:layout_height="60dp"-->
+                    <!--                        android:layout_alignParentBottom="true"-->
+
+                    <!--                        android:layout_alignParentRight="true"-->
+                    <!--                        app:lottie_rawRes="@raw/checked"/>-->
+
+                </RelativeLayout>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieParty"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-40dp"
+                    app:lottie_rawRes="@raw/confetti" />
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardKiss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:cardBackgroundColor="@color/qq"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/gradient_timber">
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/lottieKiss"
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="40dp"
+                        app:lottie_rawRes="@raw/kiss" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="25dp"
+                        android:text="Крутой"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+
+                        android:layout_width="200dp"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+
+                        android:layout_marginBottom="60dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txtCountAdult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:padding="20dp"
+                        android:text="125 карт"
+                        android:textColor="@color/white"
+
+                        android:textSize="20sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/rbAdult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:clickable="false"
+                        android:theme="@style/RBAdult" />
+                    <!--                    <com.airbnb.lottie.LottieAnimationView-->
+                    <!--                        android:id="@+id/btnChecked2"-->
+                    <!--                        android:layout_width="60dp"-->
+                    <!--                        android:layout_height="60dp"-->
+                    <!--                        android:layout_alignParentBottom="true"-->
+
+                    <!--                        android:layout_alignParentRight="true"-->
+                    <!--                        app:lottie_rawRes="@raw/checked"/>-->
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+
+                <RelativeLayout
+                    android:id="@+id/layoutKazak"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/gradient_sand">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="25dp"
+                        android:text="Кумылженский"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="200dp"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="60dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txtCountKum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:padding="20dp"
+                        android:text="125 карт"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+
+                    <RadioButton
+                        android:id="@+id/rbKum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentBottom="true"
+                        android:clickable="false"
+                        android:theme="@style/RBKum" />
+                    <!--                    <com.airbnb.lottie.LottieAnimationView-->
+                    <!--                        android:id="@+id/btnCheckedKum"-->
+                    <!--                        android:layout_width="60dp"-->
+                    <!--                        android:layout_height="60dp"-->
+                    <!--                        android:layout_alignParentBottom="true"-->
+
+                    <!--                        android:layout_alignParentRight="true"-->
+                    <!--                        app:lottie_rawRes="@raw/checked"/>-->
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/imgKazak"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-38dp"
+                    android:paddingTop="35dp"
+                    android:src="@raw/kazak" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
