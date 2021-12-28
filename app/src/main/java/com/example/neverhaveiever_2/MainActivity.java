@@ -49,10 +49,11 @@ public class MainActivity extends AppCompatActivity {
         listCategory.add((Boolean) argument.get("First"));
         listCategory.add((Boolean) argument.get("Second"));
         listCategory.add((Boolean) argument.get("Kum"));
+        listCategory.add((Boolean) argument.get("Winter"));
 
 
 
-    btnBack.setOnClickListener(vie ->{
+    btnBack.setOnClickListener(view ->{
         Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
         startActivity(intent);
         finish();

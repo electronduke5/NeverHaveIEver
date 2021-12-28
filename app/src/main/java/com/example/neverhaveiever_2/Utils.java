@@ -25,6 +25,9 @@ public class Utils {
         if(listCategory.get(2)){
             actions.addAll(Arrays.asList(context.getResources().getStringArray(R.array.ActionsForKum)));
         }
+        if(listCategory.get(3)){
+            actions.addAll((Arrays.asList(context.getResources().getStringArray(R.array.ActionsForNewYear))));
+        }
 
 //        List<String> actions = new ArrayList<>(Arrays.asList(context.getResources().getStringArray(R.array.Actions)));
         Collections.shuffle(actions);

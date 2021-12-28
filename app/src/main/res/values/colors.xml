@@ -37,6 +37,9 @@
     <color name="dark_green_start">#061700</color>
     <color name="dark_green_end">#52c234</color>
 
+    <color name="winter_end">#f2fcfe</color>
+    <color name="winter_start">#1c92d2</color>
+
 
 
 </resources>
