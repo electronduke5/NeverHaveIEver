@@ -14,12 +14,14 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.example.neverhaveiever_2.data.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,20 +39,29 @@ public class CategoryActivity extends AppCompatActivity {
     LottieAnimationView lottieKiss;
 
 
+
+
     RelativeLayout firstLayout;
     CardView cardKiss;
     RelativeLayout layoutKazak;
 
-    Button btnStart;
 
+    Button btnStart;
+    Button btnEditCustom;
+
+    //Количесвто карточек в наборах
     TextView txtCountStarting;
     TextView txtCountAdult;
     TextView txtCountKum;
 
+
+    //Радиобаттон на карточках
     RadioButton rbStarting;
     RadioButton rbAdult;
     RadioButton rbKum;
 
+
+    //Общее количество выбранных карточек и наборов
     TextView txtCards;
     TextView txtSets;
 
@@ -58,38 +69,51 @@ public class CategoryActivity extends AppCompatActivity {
 
     RelativeLayout viewCards;
     RelativeLayout viewSets;
+
     //Новогодний сет
     LottieAnimationView lottieSnowman;
     RelativeLayout layoutWinter;
     RadioButton rbWinter;
     TextView txtCountWinter;
 
+    //Кастомный сет
+    LottieAnimationView lottieCustom;
+    RelativeLayout layoutCustom;
+    RadioButton rbCustom;
+    TextView txtCountCustom;
 
+    DatabaseHelper dbHelper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        DeclensionCountCard declensionCountCard = new DeclensionCountCard();
+
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         txtCountStarting = findViewById(R.id.txtCountStarting);
-        txtCountStarting.setText(String.format("%s карт", getResources().getStringArray(R.array.Actions).length));
+        txtCountStarting.setText(declensionCountCard.GetCase(getResources().getStringArray(R.array.Actions).length));
 
         txtCountAdult = findViewById(R.id.txtCountAdult);
-        txtCountAdult.setText(String.format("%s карт", getResources().getStringArray(R.array.ActionsForAdult).length));
+        txtCountAdult.setText(declensionCountCard.GetCase(getResources().getStringArray(R.array.ActionsForAdult).length));
 
         txtCountKum = findViewById(R.id.txtCountKum);
-        txtCountKum.setText(String.format("%s карт", getResources().getStringArray(R.array.ActionsForKum).length));
+        txtCountKum.setText(declensionCountCard.GetCase(getResources().getStringArray(R.array.ActionsForKum).length));
 
         txtCountWinter = findViewById(R.id.txtCountWinter);
-        txtCountWinter.setText(String.format("%s карт", getResources().getStringArray(R.array.ActionsForNewYear).length));
+        txtCountWinter.setText(declensionCountCard.GetCase(getResources().getStringArray(R.array.ActionsForNewYear).length));
+
+        txtCountCustom = findViewById(R.id.txtCountCustom);
+        txtCountCustom.setText(declensionCountCard.GetCase((int)dbHelper.size()));
 
 
         rbStarting = findViewById(R.id.rbStarting);
         rbAdult = findViewById(R.id.rbAdult);
         rbKum = findViewById(R.id.rbKum);
         rbWinter = findViewById(R.id.rbWinter);
+        rbCustom = findViewById(R.id.rbCustom);
 
         //Текст с количеством выбранных карт
         txtCards = findViewById(R.id.txtCards);
@@ -97,9 +121,16 @@ public class CategoryActivity extends AppCompatActivity {
         txtSets = findViewById(R.id.txtSets);
 
         btnRules = findViewById(R.id.btnRules);
+        btnEditCustom = findViewById(R.id.btnEditCustom);
+        btnEditCustom.setOnClickListener(view ->{
+            Intent intent = new Intent(CategoryActivity.this, CustomQuestionsActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         viewCards = findViewById(R.id.viewCards);
         viewSets = findViewById(R.id.viewSet);
+
 
 
 //        checkedDone = findViewById(R.id.btnChecked);
@@ -108,6 +139,7 @@ public class CategoryActivity extends AppCompatActivity {
         lottieParty = findViewById(R.id.lottieParty);
         lottieKiss = findViewById(R.id.lottieKiss);
         lottieSnowman = findViewById(R.id.lottieSnowman);
+        lottieCustom = findViewById(R.id.lottieCustom);
 
         List<Boolean> listBool = new ArrayList<>();
         List<String> selectedCategories = new ArrayList<>();
@@ -119,6 +151,7 @@ public class CategoryActivity extends AppCompatActivity {
         firstLayout = findViewById(R.id.firstLayout);
         layoutKazak = findViewById(R.id.layoutKazak);
         layoutWinter = findViewById(R.id.layoutNewYear);
+        layoutCustom = findViewById(R.id.layoutCustom);
 
 
         cardKiss.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +162,7 @@ public class CategoryActivity extends AppCompatActivity {
                 txtSets.setText(CalcSets());
                 txtCards.setText(CalcCards());
 
-                if(rbAdult.isChecked()){
+                if(rbAdult.isChecked() && !lottieKiss.isAnimating()){
                     lottieKiss.setSpeed(1);
                     lottieKiss.playAnimation();
                 }
@@ -148,7 +181,7 @@ public class CategoryActivity extends AppCompatActivity {
 
                 playAnimation_StartButton();
 
-                if(rbStarting.isChecked()){
+                if(rbStarting.isChecked() && !lottieParty.isAnimating()){
                     lottieParty.setSpeed(1);
                     lottieParty.playAnimation();
                 }
@@ -169,10 +202,25 @@ public class CategoryActivity extends AppCompatActivity {
                 txtSets.setText(CalcSets());
                 playAnimation_StartButton();
 
-                if (rbWinter.isChecked()){
+                if (rbWinter.isChecked() && !lottieSnowman.isAnimating()){
                     lottieSnowman.setSpeed(1);
                     lottieSnowman.playAnimation();
                 }
+        });
+
+        layoutCustom.setOnClickListener(view -> {
+            rbCustom.setChecked(!rbCustom.isChecked());
+            txtCards.setText(CalcCards());
+            txtSets.setText(CalcSets());
+            playAnimation_StartButton();
+
+            if(rbCustom.isChecked() && !lottieCustom.isAnimating()){
+                lottieCustom.setSpeed(1);
+                lottieCustom.playAnimation();
+            }
+//            Intent intent = new Intent(CategoryActivity.this, CustomQuestionsActivity.class);
+//            startActivity(intent);
+//            finish();
         });
 
 
@@ -185,6 +233,7 @@ public class CategoryActivity extends AppCompatActivity {
             intent.putExtra("Second", rbAdult.isChecked());
             intent.putExtra("Kum", rbKum.isChecked());
             intent.putExtra("Winter", rbWinter.isChecked());
+            intent.putExtra("Custom", rbCustom.isChecked());
             startActivity(intent);
             finish();
         });
@@ -197,7 +246,7 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void playAnimation_StartButton() {
-        if (rbStarting.isChecked() || rbAdult.isChecked() || rbKum.isChecked() || rbWinter.isChecked()) {
+        if (rbStarting.isChecked() || rbAdult.isChecked() || rbKum.isChecked() || rbWinter.isChecked() || rbCustom.isChecked()) {
 
             btnStart.setEnabled(true);
             viewCards.setBackgroundColor(getResources().getColor(R.color.christmas_start));
@@ -206,8 +255,7 @@ public class CategoryActivity extends AppCompatActivity {
 //            viewSets.setBackground((Drawable) getResources().getDrawable(R.drawable.gradient));
 
 
-        } else if (!rbStarting.isChecked() && !rbAdult.isChecked() && !rbKum.isChecked() && !rbWinter.isChecked()) {
-
+        } else if (!rbStarting.isChecked() && !rbAdult.isChecked() && !rbKum.isChecked() && !rbWinter.isChecked() || !rbCustom.isChecked()) {
 
             btnStart.setEnabled(false);
             viewCards.setBackgroundColor(getResources().getColor(R.color.christmas_end));
@@ -215,7 +263,6 @@ public class CategoryActivity extends AppCompatActivity {
 //            viewCards.setBackground((Drawable) getResources().getDrawable(R.drawable.gradient_red));
 //            viewSets.setBackground((Drawable) getResources().getDrawable(R.drawable.gradient_red));
         }
-
     }
 
     private String CalcCards() {
@@ -233,6 +280,9 @@ public class CategoryActivity extends AppCompatActivity {
         if(rbWinter.isChecked())
             allCards += getResources().getStringArray(R.array.ActionsForNewYear).length;
 
+        if(rbCustom.isChecked())
+            allCards += dbHelper.size();
+
         return String.valueOf(allCards);
     }
 
@@ -247,8 +297,9 @@ public class CategoryActivity extends AppCompatActivity {
             allSets++;
         if(rbWinter.isChecked())
             allSets++;
+        if(rbCustom.isChecked())
+            allSets++;
 
         return String.valueOf(allSets);
-
     }
 }

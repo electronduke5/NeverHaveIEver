@@ -1,28 +1,28 @@
 package com.example.neverhaveiever_2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 
-import com.example.neverhaveiever_2.CardActivity;
-import com.example.neverhaveiever_2.CardItem;
-import com.example.neverhaveiever_2.Utils;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.neverhaveiever_2.data.DatabaseHelper;
+import com.example.neverhaveiever_2.data.QuestionContract;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private DatabaseHelper mDbHelper;
 
     private SwipePlaceHolderView mSwipeView;
     private Context mContext;
@@ -33,16 +33,17 @@ public class MainActivity extends AppCompatActivity {
     //List<String> listCategory;
     List<Boolean> listCategory;
     ImageView btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        mDbHelper = new DatabaseHelper(this);
 
         listCategory = new ArrayList<>();
         btnBack = findViewById(R.id.btnBack1);
-
 
         //Добавляем в лист значения выбранных категорий
         Bundle argument = getIntent().getExtras();
@@ -50,19 +51,18 @@ public class MainActivity extends AppCompatActivity {
         listCategory.add((Boolean) argument.get("Second"));
         listCategory.add((Boolean) argument.get("Kum"));
         listCategory.add((Boolean) argument.get("Winter"));
+        listCategory.add((Boolean) argument.get("Custom"));
 
 
-
-    btnBack.setOnClickListener(view ->{
-        Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
-        startActivity(intent);
-        finish();
-    });
-
+        btnBack.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CategoryActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
 
         //btNext = findViewById(R.id.btnNext);
-        mSwipeView = (SwipePlaceHolderView)findViewById(R.id.swipeView);
+        mSwipeView = (SwipePlaceHolderView) findViewById(R.id.swipeView);
         mContext = getApplicationContext();
 //        btNext.setOnClickListener(view ->{
 //            mSwipeView.doSwipe(true);
@@ -75,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
                         .setRelativeScale(0.01f)
                 );
 
-        for(CardItem cardItem :
-                Utils.getActionList(mContext, listCategory)){
-            mSwipeView.addView(new CardActivity(mContext,cardItem, mSwipeView));
+        for (CardItem cardItem :
+                Utils.getActionList(mContext, listCategory)) {
+            mSwipeView.addView(new CardActivity(mContext, cardItem, mSwipeView));
         }
 
 //        for (int i = 0; i< getResources().getStringArray(R.array.Actions).length; i++){
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
-    public void onCLick(View view){
+    public void onCLick(View view) {
         mSwipeView.doSwipe(true);
     }
 

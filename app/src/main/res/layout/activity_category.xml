@@ -22,18 +22,19 @@
         android:layout_height="?actionBarSize"
         tools:ignore="MissingConstraints">
 
-<!--        <ImageView-->
-<!--            android:layout_width="60dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_centerVertical="true"-->
-<!--            android:padding="15dp"-->
-<!--            android:src="@drawable/setting_outline" />-->
+        <ImageView
+            android:id="@+id/btnSettings"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="15dp"
+            android:src="@drawable/setting_outline" />
 
         <ImageView
             android:id="@+id/btnRules"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:padding="15dp"
             android:src="@drawable/question_outline" />
@@ -58,7 +59,7 @@
         tools:ignore="MissingConstraints">
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="12dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_width="?actionBarSize"
             android:layout_height="?actionBarSize">
             <RelativeLayout
@@ -95,7 +96,7 @@
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
             app:cardCornerRadius="12dp"
-            android:layout_marginLeft="80dp"
+            android:layout_marginStart="80dp"
             android:layout_width="?actionBarSize"
             android:layout_height="?actionBarSize">
             <RelativeLayout
@@ -136,9 +137,9 @@
             android:id="@+id/btnStart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:text=" Начать "
             style="@style/btn_Next"
             android:padding="14dp"
@@ -187,7 +188,7 @@
                         android:layout_width="200dp"
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginBottom="60dp"
                         android:background="@color/white" />
 
@@ -206,7 +207,7 @@
                         android:id="@+id/rbStarting"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:clickable="false"
                         android:theme="@style/RBStarting" />
@@ -225,7 +226,7 @@
                     android:id="@+id/lottieParty"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="-40dp"
                     app:lottie_rawRes="@raw/confetti" />
 
@@ -248,7 +249,7 @@
                         android:id="@+id/lottieKiss"
                         android:layout_width="120dp"
                         android:layout_height="match_parent"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_marginBottom="40dp"
                         app:lottie_rawRes="@raw/kiss" />
 
@@ -265,7 +266,7 @@
                         android:layout_width="200dp"
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
 
                         android:layout_marginBottom="60dp"
                         android:background="@color/white" />
@@ -286,7 +287,7 @@
                         android:id="@+id/rbAdult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:clickable="false"
                         android:theme="@style/RBAdult" />
@@ -327,7 +328,7 @@
                         android:layout_width="200dp"
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginBottom="60dp"
                         android:background="@color/white" />
 
@@ -346,7 +347,7 @@
                         android:id="@+id/rbKum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:clickable="false"
                         android:theme="@style/RBKum" />
@@ -365,7 +366,7 @@
                     android:id="@+id/imgKazak"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="-38dp"
                     android:paddingTop="35dp"
                     android:src="@raw/kazak" />
@@ -396,7 +397,7 @@
                         android:layout_width="200dp"
                         android:layout_height="1dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginBottom="60dp"
                         android:background="@color/white" />
 
@@ -415,7 +416,7 @@
                         android:id="@+id/rbWinter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:clickable="false"
                         android:theme="@style/RBWinter" />
@@ -425,10 +426,81 @@
                     android:id="@+id/lottieSnowman"
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_marginTop="-35dp"
                     android:layout_marginEnd="-20dp"
                     app:lottie_rawRes="@raw/snowman" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+
+                <RelativeLayout
+                    android:id="@+id/layoutCustom"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/gradient_custom">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="25dp"
+                        android:text="Мои карточки"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="200dp"
+                        android:layout_height="1dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="60dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txtCountCustom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:padding="20dp"
+                        android:text="125 карт"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+
+                    <Button
+                        style="@style/btnEditCustom"
+                        android:id="@+id/btnEditCustom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:text="Редактировать"
+                        android:textAllCaps="false"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/txtCountCustom"/>
+
+
+                    <RadioButton
+                        android:id="@+id/rbCustom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:clickable="false"
+                        android:theme="@style/RBCustom" />
+
+                </RelativeLayout>
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/lottieCustom"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="-45dp"
+                    android:layout_marginEnd="-20dp"
+                    app:lottie_rawRes="@raw/custom" />
 
             </RelativeLayout>
 

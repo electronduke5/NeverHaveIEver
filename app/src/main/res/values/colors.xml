@@ -40,6 +40,9 @@
     <color name="winter_end">#f2fcfe</color>
     <color name="winter_start">#1c92d2</color>
 
+    <color name="custom_start">#b21f1f</color>
+    <color name="custom_end">#fdbb2d</color>
+
 
 
 </resources>

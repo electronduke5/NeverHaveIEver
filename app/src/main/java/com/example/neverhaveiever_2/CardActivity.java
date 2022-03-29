@@ -47,12 +47,4 @@ public class CardActivity {
         Log.d("EVENT", "onSwipedOut");
         swipeHolder.addView(this);
     }
-
-
-
-
-
-
-
-
 }
