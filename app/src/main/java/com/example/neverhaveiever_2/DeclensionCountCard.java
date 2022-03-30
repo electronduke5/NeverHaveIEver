@@ -2,19 +2,11 @@ package com.example.neverhaveiever_2;
 
 public class DeclensionCountCard {
 
-    //public static SensitiveWord Cards = new SensitiveWord("карта", "карты", "карт");
-
-
     private final String FirstCase = "карта"; //Карта
     private final String SecondCase = "карты"; //Карты
     private final String ThirdCase = "карт";  //Карт
 
-    public DeclensionCountCard() {
-        //String firstCase, String secondCase, String thirdCase
-//            FirstCase = firstCase;
-//            SecondCase = secondCase;
-//            ThirdCase = thirdCase;
-    }
+    public DeclensionCountCard() {}
 
     public String GetCase(int amount) {
         String wordCase;
@@ -34,5 +26,4 @@ public class DeclensionCountCard {
         }
         return String.format("%s %s", amount, wordCase);
     }
-
 }

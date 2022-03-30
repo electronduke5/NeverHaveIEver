@@ -18,7 +18,6 @@ public class RulesActivity extends AppCompatActivity {
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-
         btnBack = findViewById(R.id.btnBack);
 
         btnBack.setOnClickListener(view ->{
@@ -34,5 +33,4 @@ public class RulesActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }

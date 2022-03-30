@@ -2,17 +2,11 @@ package com.example.neverhaveiever_2;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.media.Image;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.example.neverhaveiever_2.CustomQuestionsActivity.*;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         View view = inflater.inflate(R.layout.custom_question_model,parent,false);
         return new ViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
         CustomQModel model = models.get(position);
@@ -77,6 +72,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         models.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position,models.size());
-
     }
 }

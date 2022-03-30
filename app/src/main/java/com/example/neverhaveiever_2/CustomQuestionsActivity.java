@@ -1,4 +1,5 @@
 package com.example.neverhaveiever_2;
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -10,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 public class CustomQuestionsActivity extends AppCompatActivity {
 
-    LinearLayout ll;
     EditText edtCustomQuestion;
     Button btnAddQuestion;
     ImageView btnBack;
@@ -38,6 +37,7 @@ public class CustomQuestionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_questions);
+
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -81,7 +81,6 @@ public class CustomQuestionsActivity extends AppCompatActivity {
 
         // Создаем объект ContentValues, где имена столбцов ключи,
         // а информация о госте является значениями ключей
-
         ContentValues values = new ContentValues();
         if (!edtCustomQuestion.getText().toString().equals("")) {
             values.put(QuestionContract.CustomQuestion.COLUMN_QUESTION, edtCustomQuestion.getText().toString());
@@ -124,7 +123,6 @@ public class CustomQuestionsActivity extends AppCompatActivity {
                 data.add(new CustomQModel(currentID, currentQuestion));
             }
         } finally {
-            //Закрываем курсор
             cursor.close();
         }
         return data;

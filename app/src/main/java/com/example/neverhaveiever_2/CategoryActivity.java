@@ -28,38 +28,8 @@ import java.util.List;
 
 public class CategoryActivity extends AppCompatActivity {
 
-    private boolean isCheckedDone;
-    private boolean isCheckedDone2;
-    private boolean isCheckedDoneKum;
-
-    LottieAnimationView lottieParty;
-    //    LottieAnimationView checkedDone;
-//    LottieAnimationView checkedDone2;
-//    LottieAnimationView checkedDoneKum;
-    LottieAnimationView lottieKiss;
-
-
-
-
-    RelativeLayout firstLayout;
-    CardView cardKiss;
-    RelativeLayout layoutKazak;
-
-
     Button btnStart;
     Button btnEditCustom;
-
-    //Количесвто карточек в наборах
-    TextView txtCountStarting;
-    TextView txtCountAdult;
-    TextView txtCountKum;
-
-
-    //Радиобаттон на карточках
-    RadioButton rbStarting;
-    RadioButton rbAdult;
-    RadioButton rbKum;
-
 
     //Общее количество выбранных карточек и наборов
     TextView txtCards;
@@ -69,6 +39,23 @@ public class CategoryActivity extends AppCompatActivity {
 
     RelativeLayout viewCards;
     RelativeLayout viewSets;
+
+    //Начальный сет
+    LottieAnimationView lottieParty;
+    RelativeLayout firstLayout;
+    TextView txtCountStarting;
+    RadioButton rbStarting;
+
+    //Крутой сет
+    LottieAnimationView lottieKiss;
+    RadioButton rbAdult;
+    CardView cardKiss;
+    TextView txtCountAdult;
+
+    //Кумылженский сет
+    RelativeLayout layoutKazak;
+    RadioButton rbKum;
+    TextView txtCountKum;
 
     //Новогодний сет
     LottieAnimationView lottieSnowman;
@@ -131,11 +118,6 @@ public class CategoryActivity extends AppCompatActivity {
         viewCards = findViewById(R.id.viewCards);
         viewSets = findViewById(R.id.viewSet);
 
-
-
-//        checkedDone = findViewById(R.id.btnChecked);
-//         checkedDone2 = findViewById(R.id.btnChecked2);
-//         checkedDoneKum = findViewById(R.id.btnCheckedKum);
         lottieParty = findViewById(R.id.lottieParty);
         lottieKiss = findViewById(R.id.lottieKiss);
         lottieSnowman = findViewById(R.id.lottieSnowman);
@@ -147,7 +129,6 @@ public class CategoryActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btnStart);
 
         cardKiss = findViewById(R.id.cardKiss);
-
         firstLayout = findViewById(R.id.firstLayout);
         layoutKazak = findViewById(R.id.layoutKazak);
         layoutWinter = findViewById(R.id.layoutNewYear);
@@ -167,7 +148,6 @@ public class CategoryActivity extends AppCompatActivity {
                     lottieKiss.playAnimation();
                 }
                 playAnimation_StartButton();
-
             }
         });
 
@@ -185,7 +165,6 @@ public class CategoryActivity extends AppCompatActivity {
                     lottieParty.setSpeed(1);
                     lottieParty.playAnimation();
                 }
-
             }
         });
         layoutKazak.setOnClickListener(view -> {
@@ -218,16 +197,12 @@ public class CategoryActivity extends AppCompatActivity {
                 lottieCustom.setSpeed(1);
                 lottieCustom.playAnimation();
             }
-//            Intent intent = new Intent(CategoryActivity.this, CustomQuestionsActivity.class);
-//            startActivity(intent);
-//            finish();
         });
 
 
         btnStart.setOnClickListener(view -> {
 
             Intent intent = new Intent(CategoryActivity.this, MainActivity.class);
-            Log.i("Result", String.valueOf(isCheckedDone));
 
             intent.putExtra("First", rbStarting.isChecked());
             intent.putExtra("Second", rbAdult.isChecked());
@@ -246,22 +221,25 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void playAnimation_StartButton() {
-        if (rbStarting.isChecked() || rbAdult.isChecked() || rbKum.isChecked() || rbWinter.isChecked() || rbCustom.isChecked()) {
+        if (rbStarting.isChecked() ||
+                rbAdult.isChecked() ||
+                rbKum.isChecked() ||
+                rbWinter.isChecked() ||
+                rbCustom.isChecked()) {
 
             btnStart.setEnabled(true);
             viewCards.setBackgroundColor(getResources().getColor(R.color.christmas_start));
             viewSets.setBackgroundColor(getResources().getColor(R.color.christmas_start));
-//            viewCards.setBackground((Drawable) getResources().getDrawable(R.drawable.gradient));
-//            viewSets.setBackground((Drawable) getResources().getDrawable(R.drawable.gradient));
 
-
-        } else if (!rbStarting.isChecked() && !rbAdult.isChecked() && !rbKum.isChecked() && !rbWinter.isChecked() || !rbCustom.isChecked()) {
+        } else if (!rbStarting.isChecked() &&
+                !rbAdult.isChecked() &&
+                !rbKum.isChecked() &&
+                !rbWinter.isChecked() ||
+                !rbCustom.isChecked()) {
 
             btnStart.setEnabled(false);
             viewCards.setBackgroundColor(getResources().getColor(R.color.christmas_end));
             viewSets.setBackgroundColor(getResources().getColor(R.color.christmas_end));
-//            viewCards.setBackground((Drawable) getResources().getDrawable(R.drawable.gradient_red));
-//            viewSets.setBackground((Drawable) getResources().getDrawable(R.drawable.gradient_red));
         }
     }
 

@@ -23,7 +23,6 @@ public class Utils {
         List<CardItem> list = new ArrayList<>();
         actions.clear();
 
-
         if (listCategory.get(0)) {
             actions.addAll(Arrays.asList(context.getResources().getStringArray(R.array.Actions)));
         }
@@ -40,7 +39,6 @@ public class Utils {
             actions.addAll(getCardsFromDB(context));
         }
 
-//        List<String> actions = new ArrayList<>(Arrays.asList(context.getResources().getStringArray(R.array.Actions)));
         Collections.shuffle(actions);
         actions.add(0, "нажимал на кнопку 'Дальше', \nчтобы начать игру!");
 
@@ -48,13 +46,6 @@ public class Utils {
             list.add(new CardItem(actions.get(i),
                     getTxtNumberAction(i, actions.size()-1)));
         }
-
-//        for (int i = 0; i < context.getResources().getStringArray(R.array.Actions).length; i++) {
-//            list.add((new CardItem(
-//                    actions.get(i),
-//                    getTxtNumberAction(i, context.getResources().getStringArray(R.array.Actions).length)
-//            )));
-//        }
         return list;
     }
 

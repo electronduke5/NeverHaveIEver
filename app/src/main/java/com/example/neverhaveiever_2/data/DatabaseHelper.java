@@ -1,17 +1,11 @@
 package com.example.neverhaveiever_2.data;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import com.example.neverhaveiever_2.data.QuestionContract.CustomQuestion;
-
-import androidx.annotation.Nullable;
-
-import java.lang.invoke.CallSite;
-import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -50,14 +44,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         + CustomQuestion.COLUMN_QUESTION + " TEXT NOT NULL);";
         //Запускаем создание таблицы
         db.execSQL(SQL_CREATE_QUESTIONS_TABLE);
-
     }
 
     /**
      * Вызывается при обовлении схемы БД
-     * @param db
-     * @param oldVersion
-     * @param newVersion
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -76,6 +66,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return count;
     }
-
-
 }

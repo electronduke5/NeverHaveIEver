@@ -15,8 +15,8 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/futura_round_normal</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
-
     </style>
+
     <style name="btn_Next" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background" tools:targetApi="lollipop">@drawable/button</item>
         <item name="android:textColor">@color/white</item>
@@ -45,6 +45,7 @@
     <style name="RBCustom" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorControlActivated">@color/custom_start</item>
     </style>
+
     <style name="text_question" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">15sp</item>
@@ -59,6 +60,7 @@
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="btnDeleteAll" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:background">@drawable/button_delete_all</item>
         <item name="cornerRadius">15dp</item>
