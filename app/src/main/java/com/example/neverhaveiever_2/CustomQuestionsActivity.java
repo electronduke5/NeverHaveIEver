@@ -28,6 +28,7 @@ public class CustomQuestionsActivity extends AppCompatActivity {
     EditText edtCustomQuestion;
     Button btnAddQuestion;
     ImageView btnBack;
+    Button btnDeleteAll;
 
     RecyclerView recyclerView;
     ArrayList<CustomQModel> models = new ArrayList<>();
@@ -42,6 +43,7 @@ public class CustomQuestionsActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         edtCustomQuestion = findViewById(R.id.edtQuestion);
+        btnDeleteAll = findViewById(R.id.btnDeleteAll);
 
         mDbHelper = new DatabaseHelper(this);
         updateRecyclerView();
@@ -62,6 +64,10 @@ public class CustomQuestionsActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBackAction);
         btnBack.setOnClickListener(view ->{
             onBackPressed();
+        });
+
+        btnDeleteAll.setOnClickListener(view ->{
+            deleteAll();
         });
     }
 
@@ -126,6 +132,14 @@ public class CustomQuestionsActivity extends AppCompatActivity {
             cursor.close();
         }
         return data;
+    }
+
+    private void deleteAll(){
+        models.clear();
+        recyclerView.removeAllViews();
+        SQLiteDatabase db = mDbHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM " + QuestionContract.CustomQuestion.TABLE_NAME + ";");
+        db.close();
     }
 
     @Override

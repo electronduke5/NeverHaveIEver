@@ -221,11 +221,12 @@ public class CategoryActivity extends AppCompatActivity {
     }
 
     public void playAnimation_StartButton() {
-        if (rbStarting.isChecked() ||
+        if ((rbStarting.isChecked() ||
                 rbAdult.isChecked() ||
                 rbKum.isChecked() ||
                 rbWinter.isChecked() ||
-                rbCustom.isChecked()) {
+                rbCustom.isChecked()) &&
+                !txtCards.getText().equals("0")) {
 
             btnStart.setEnabled(true);
             viewCards.setBackgroundColor(getResources().getColor(R.color.christmas_start));
@@ -235,7 +236,8 @@ public class CategoryActivity extends AppCompatActivity {
                 !rbAdult.isChecked() &&
                 !rbKum.isChecked() &&
                 !rbWinter.isChecked() ||
-                !rbCustom.isChecked()) {
+                !rbCustom.isChecked() ||
+                txtCards.getText().equals("0")) {
 
             btnStart.setEnabled(false);
             viewCards.setBackgroundColor(getResources().getColor(R.color.christmas_end));
